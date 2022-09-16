@@ -1,0 +1,90 @@
+@use 'base/mixins';
+@use 'base/variables';
+
+.lineup{
+    background-color: variables.$rosa;
+    padding: 5rem;
+
+    h3, p{
+        text-align: center;
+        color: variables.$blanco;
+    }
+
+    .dia{
+        text-transform: uppercase;
+        margin: 5rem 0;
+    }
+}
+
+.escenarios-contenedor{
+    @include mixins.tablet {
+        @include mixins.grid(2, 5rem);
+    }
+
+//Añadimos estilos a los párrafos que estén dentro de la clase .escenarios-contenedor
+    p{
+        color: variables.$negro;
+    }
+
+}
+
+.escenario{
+    padding-top: 2rem;
+
+    p{
+        &:after{
+            content: '';
+            display: block;
+            width: 20rem;
+            height: 10rem;
+            background-size: 15rem;
+            background-repeat: no-repeat;
+            background-position: center center;
+            margin: 2rem auto 0 auto;
+        }
+    }
+}
+
+.edm .nombre-escenario:after{
+    background-image: url(../img/icono_edm.png);
+}
+
+.rock .nombre-escenario:after{
+    background-image: url(../img/icono_rock.png);
+}
+
+.calendario{
+    //Añadimos un mixin a fin de resetear propiedades de los li
+    @include mixins.resetear-lista;
+    li{
+        padding: 2.5rem;
+        font-weight: 700;
+        span{
+            font-weight: 400;
+        }
+    }
+}
+
+.bg-amarillo{
+    background-color: variables.$amarillo;
+
+    //Añadir diferente estilo a los elementos de una li de manera impar
+    li:nth-child(odd){
+        //propiedad de sass
+        background-color: darken(variables.$amarillo, 10%);
+    }
+}
+
+.bg-verde{
+    background-color: variables.$verde;
+
+        //Añadir diferente estilo a los elementos de una li de manera impar
+    li:nth-child(odd){
+        //propiedad de sass
+        background-color: darken(variables.$verde, 10%);
+    }
+}
+
+
+
+

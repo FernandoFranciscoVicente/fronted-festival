@@ -1,0 +1,67 @@
+@use 'base/variables';
+@use 'base/mixins';
+
+.galeria{
+    padding: 5rem 0;
+
+    h3{
+        text-align: center;
+    }
+}
+
+.galeria-imagenes{
+
+    //Añadimos los mixins para especificar en cuántas columnas se ordenarán dependiendo de la resolución del dispositivo 
+    @include mixins.resetear-lista;
+    @include mixins.grid(2, 2rem);
+    @include mixins.telefono {
+        @include mixins.grid(3, 2rem);
+    }
+    @include mixins.tablet {
+        @include mixins.grid(4, 2rem);
+    }
+    @include mixins.desktop {
+        @include mixins.grid(6, 2rem);
+    }
+}
+
+.overlay{
+    //añadimos un posicionamiento fijo
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+
+    //Las propiedades de grid ayudan a que la imagen mostrada consiga ser centrada vertical y horizontalmente
+    display: grid;
+    place-items: center;
+
+    //Añadir oscurecimiento al fondo
+    background-color: rgba(0,0,0,0.5);
+
+    //Para darle estilo a la etiqueta picture dentro de overlay
+    picture{
+        //El display block es necesario para que el max-width efecte a la imagen
+        display: block;
+        max-width: 90rem;
+    }
+}
+
+.btn-cerrar{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: variables.$blanco;
+    color: variables.$negro;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+}
+
+.btn-cerrar:hover{
+    cursor: pointer;
+}

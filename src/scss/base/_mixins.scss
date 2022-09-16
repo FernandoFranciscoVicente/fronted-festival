@@ -1,0 +1,52 @@
+@use 'variables';
+
+
+//Referencia de un mixin inteligente, es decir una función con parámetros
+//a fin de ser reutilizable
+
+/**
+@mixin heading($color: blue, $border-radius:false){
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    color: $color;
+    letter-spacing: 1rem;
+    background-color: variables.$negro;
+
+    @if $border-radius{
+        border-radius: 1rem;
+    }
+}
+
+**/
+
+@mixin telefono{
+    @media (min-width: variables.$telefono){
+        @content;
+    }
+}
+
+@mixin tablet{
+    @media (min-width: variables.$tablet){
+        @content;
+    }
+}
+
+
+@mixin desktop{
+    @media (min-width: variables.$desktop){
+        @content;
+    }
+}
+
+//mixin con parámetros a fin de volver más eficaz la creación de div con grid en n columnas
+@mixin grid($columnas, $espaciado){
+    display: grid;
+    grid-template-columns: repeat($columnas, 1fr);
+    gap: $espaciado;
+}
+
+@mixin resetear-lista{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

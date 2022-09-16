@@ -1,0 +1,77 @@
+@use 'base/variables'; //Definimos la ruta absoluta 
+@use 'base/mixins';
+
+.header{
+    background-color: variables.$verde;
+
+    //Añadimos la clase .fijo al header cuando se sobrepase dada sección en el documento
+    &.fijo{
+        @include mixins.tablet {
+            position: fixed;
+            width: 100%;
+            left: 0;
+            top: 0;
+            box-shadow: 0.1rem, 0.2rem, 0.3rem, #333;
+        }
+    }
+
+    h1{
+        color: variables.$blanco;
+        text-align: center;
+        @include mixins.tablet {
+            margin: 0;
+        }
+
+    }
+
+    .contenido-header{
+        padding: 2rem;
+        @include mixins.tablet {
+            //Para aplicar flexbox, es decir, que los elementos se acomoden de manera horizontal respectivamente
+            display:flex;
+            //Para acomodarlos de lado derecho e izquierdo uno del otro
+            justify-content: space-between;
+            //Ajustar/centrar los elementos al mismo nivel
+            align-items: center;
+        }
+    }
+}
+
+.navegacion-principal{
+
+    @include mixins.tablet {
+        //Para indicar que se muestren de izquierda a derecha
+        display:flex;
+        //Añade una separación entre elementos
+        gap:2rem;
+    }
+
+    a{
+        color: variables.$blanco;
+        font-size: 2.4rem;
+        //Para que los enlaces se coloquen de arriba hacia abajo
+        display: block;
+        text-align: center;
+        //Añade separación por debajo de cada enlace
+        margin-bottom: 1rem;
+
+        @include mixins.tablet {
+            margin:0;
+        }
+    }
+    a:hover{
+        color: variables.$amarillo;
+    }
+}
+
+
+/** 
+Mixin de prueba
+.prueba{
+    @include mixins.heading(variables.$amarillo, true);
+}
+
+**/
+
+
+
